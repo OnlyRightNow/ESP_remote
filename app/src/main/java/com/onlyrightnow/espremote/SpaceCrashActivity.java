@@ -31,9 +31,9 @@ public class SpaceCrashActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Instantiate the RequestQueue.
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url = "http://" + address + "/H";
+                String url = "http://" + address + "/upHandler";
                 // Request a string response from the provided URL.
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -57,9 +57,9 @@ public class SpaceCrashActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Instantiate the RequestQueue.
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url = "http://" + address + "/L";
+                String url = "http://" + address + "/downHandler";
                 // Request a string response from the provided URL.
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
