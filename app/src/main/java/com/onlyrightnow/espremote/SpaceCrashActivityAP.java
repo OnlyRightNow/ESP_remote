@@ -19,7 +19,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.button.MaterialButton;
 
-public class SpaceCrashActivity extends AppCompatActivity {
+
+
+public class SpaceCrashActivityAP extends AppCompatActivity {
 
     void make_vibration(Vibrator vibe){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -29,13 +31,13 @@ public class SpaceCrashActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spacecrash);
 
-        Intent intent = getIntent();
-        String address = intent.getStringExtra("address");
+        String address = "192.168.4.1";
 
         final MaterialButton button_up = findViewById(R.id.spacecrash_button_up);
         final MaterialButton button_down = findViewById(R.id.spacecrash_button_down);
@@ -48,9 +50,9 @@ public class SpaceCrashActivity extends AppCompatActivity {
                 make_vibration(vibe);
                 // Instantiate the RequestQueue.
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url = "http://" + address + "/upHandler";
+                String url = "http://" + address + "/H";
                 // Request a string response from the provided URL.
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -75,9 +77,9 @@ public class SpaceCrashActivity extends AppCompatActivity {
                 make_vibration(vibe);
                 // Instantiate the RequestQueue.
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url = "http://" + address + "/downHandler";
+                String url = "http://" + address + "/L";
                 // Request a string response from the provided URL.
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {

@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -26,6 +27,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MaterialButton direct_button = findViewById(R.id.mainactivity_button_directmode);
+        direct_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SpaceCrashActivityAP.class);
+                startActivity(intent);
+            }
+        });
+
 
         TextInputEditText textInputEditText = findViewById(R.id.textinput_address);
         textInputEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -36,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
                     String text = v.getText().toString();
                     Intent intent = new Intent(MainActivity.this, SpaceCrashActivity.class);
                     intent.putExtra("address", text);
-                    Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                     handled = true;
                 }
